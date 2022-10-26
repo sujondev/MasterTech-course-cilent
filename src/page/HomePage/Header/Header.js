@@ -16,6 +16,7 @@ const Header = () => {
                             <Link className='text-decoration-none ms-3 fw-semi-bold fs-5'>Home</Link>
                             <Link className='text-decoration-none ms-3 fw-semi-bold fs-5'>Course</Link>
                             <Link className='text-decoration-none ms-3 fw-semi-bold fs-5'>Blog</Link>
+                            <Link className='text-decoration-none ms-3 fw-semi-bold fs-5'>FAQ</Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
