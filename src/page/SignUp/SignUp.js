@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 
 
 const SignUp = () => {
-    const { creatUser, googleSignIn } = useContext(AuthContext)
+    const { creatUser, googleSignIn, updateUserProfile } = useContext(AuthContext)
     const [error, setError] = useState(null)
     const provider = new GoogleAuthProvider()
 
@@ -34,11 +34,22 @@ const SignUp = () => {
             setError('password must be 6 character')
         }
 
+        const handleProfile = (name, photoURL) => {
+            const profile = {
+                displayName: name,
+                photoUrl: photoURL
+            }
+            updateUserProfile(profile)
+                .then(() => { })
+                .catch(error => console.error(error))
+        }
+
         creatUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 form.reset()
+                handleProfile(name, photoURL)
             })
             .catch(error => {
                 setError(error.error.message)

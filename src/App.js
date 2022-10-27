@@ -19,18 +19,18 @@ function App() {
       children: [
         {
           path: '/',
-          loader: () => fetch('http://localhost:5000/course'),
+          loader: () => fetch('https://programming-ninja-course-server.vercel.app/course'),
           element: <Home></Home>
         },
         {
           path: '/category/:id',
-          loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
+          loader: ({ params }) => fetch(`https://programming-ninja-course-server.vercel.app/category/${params.id}`),
           element: <Home></Home>
         },
 
         {
           path: "details/:id",
-          loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
+          loader: ({ params }) => fetch(`https://programming-ninja-course-server.vercel.app/course/${params.id}`),
           element: <CourseDeatails></CourseDeatails>
         },
 
