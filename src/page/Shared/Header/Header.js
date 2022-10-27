@@ -9,12 +9,11 @@ const Header = () => {
         <div>
             <Navbar bg="light" expand="lg">
                 <Container>
-                    <Navbar.Brand className='text-primary'>Programming Ninja Course</Navbar.Brand>
+                    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
-                            <Link className='text-decoration-none ms-3 fw-semi-bold fs-5'>Home</Link>
-                            <Link className='text-decoration-none ms-3 fw-semi-bold fs-5'>Course</Link>
+                            <Link to='/' className='text-decoration-none ms-3 fw-semi-bold fs-5'>Course</Link>
                             <Link className='text-decoration-none ms-3 fw-semi-bold fs-5'>Blog</Link>
                             <Link className='text-decoration-none ms-3 fw-semi-bold fs-5'>FAQ</Link>
                         </Nav>

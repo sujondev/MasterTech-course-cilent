@@ -1,8 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './App.css';
 import Main from './layout/Main';
-import Home from './page/HomePage/Home/Home';
+import Category from './page/Category/Category';
+import Home from './page/Home/Home';
+
 
 function App() {
   const router = createBrowserRouter([
@@ -12,9 +13,16 @@ function App() {
       children: [
         {
           path: '/',
+          loader: () => fetch('http://localhost:5000/course'),
+          element: <Home></Home>
+        },
+        {
+          path: '/category/:id',
+          loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
           element: <Home></Home>
         }
       ]
+
     }
   ])
   return (
