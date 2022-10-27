@@ -16,7 +16,7 @@ const CourseSummaryCard = ({ course }) => {
                         {details.length > 30 ? details.slice(0, 30) + "..." : details}
                     </Card.Text>
                     <p className='fw-bold'>{price}</p>
-                    <Link to={`details/${id}`}> <Button variant="primary">Course Details</Button></Link>
+                    <Link to={`/details/${id}`}> <Button variant="primary">Course Details</Button></Link>
                 </Card.Body>
             </Card>
         </div >
