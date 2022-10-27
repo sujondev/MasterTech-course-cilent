@@ -3,9 +3,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import CourseDeatails from './CourseDetails/CourseDeatails';
 import Main from './layout/Main';
+import Blog from './page/Blog/Blog';
+import CheckOut from './page/CheckOut/CheckOut';
 import Home from './page/Home/Home';
 import Login from './page/Login/Login';
-import SignUp from './SignUp/SignUp';
+import SignUp from './page/SignUp/SignUp';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 
 function App() {
@@ -38,7 +41,19 @@ function App() {
         {
           path: '/signup',
           element: <SignUp></SignUp>
+        },
+        {
+          path: '/blog',
+          element: <Blog></Blog>
+        },
+
+        {
+          path: '/premimum/:id',
+          element: <PrivateRoute>
+            <CheckOut></CheckOut>
+          </PrivateRoute>
         }
+
       ]
 
     }

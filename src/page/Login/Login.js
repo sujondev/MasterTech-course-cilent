@@ -3,12 +3,15 @@ import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import './Login.css'
 
 const Login = () => {
     const { login } = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/'
     const handlesubmit = event => {
         event.preventDefault()
         const form = event.target;
@@ -20,6 +23,7 @@ const Login = () => {
                 console.log(user)
                 form.reset()
                 toast.success('Login successfull')
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 toast.error(error.message)

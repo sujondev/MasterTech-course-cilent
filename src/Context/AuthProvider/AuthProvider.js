@@ -8,6 +8,7 @@ import { useState } from 'react';
 const auth = getAuth(app)
 export const AuthContext = createContext()
 const AuthProvider = ({ children }) => {
+    const [loading, setLoading] = useState(true)
     const [user, setuser] = useState(null)
     const creatUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -28,6 +29,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
             setuser(currentUser)
+            setLoading(false)
         })
     }, [])
 
