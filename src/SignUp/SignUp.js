@@ -1,22 +1,34 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
-import './Login.css'
 
-const Login = () => {
+const SignUp = () => {
     const handlesubmit = event => {
-        event.preventDefault()
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-
+        event.preventDefault();
     }
     return (
         <div className="Auth-form-container mx-auto">
             <form onSubmit={handlesubmit} className="Auth-form">
                 <div className="Auth-form-content">
-                    <h3 className="Auth-form-title">Sign In</h3>
+                    <h3 className="Auth-form-title">Sign Up</h3>
+                    <div className="form-group mt-3">
+                        <label>FullName</label>
+                        <input
+                            type="text"
+                            name='name'
+                            className="form-control mt-1"
+                            placeholder="Enter fullName"
+                            required
+                        />
+                    </div>
+                    <div className="form-group mt-3">
+                        <label>Photo URL</label>
+                        <input
+                            type="text"
+                            name='photoURL'
+                            className="form-control mt-1"
+                            placeholder="Enter photo URL"
+                        />
+                    </div>
                     <div className="form-group mt-3">
                         <label>Email address</label>
                         <input
@@ -39,11 +51,11 @@ const Login = () => {
                     </div>
                     <div className="d-grid gap-2 mt-3">
                         <button type="submit" className="btn btn-primary">
-                            Login
+                            SignUp
                         </button>
                     </div>
                     <p className="forgot-password text-right mt-2">
-                        Not SignUp yet? <Link to="/signup">signup</Link>
+                        Already hava a account? <Link to="/login">Login</Link>
                     </p>
                 </div>
             </form>
@@ -51,4 +63,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;
