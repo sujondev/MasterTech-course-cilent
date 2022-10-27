@@ -8,7 +8,7 @@ import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import LeftsideNav from '../LeftSideNav/LeftSideNav';
 
 const Header = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logout } = useContext(AuthContext)
     return (
         <div>
             <Navbar bg="light" expand="lg">
@@ -18,9 +18,18 @@ const Header = () => {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
                             <Link to='/' className='text-decoration-none ms-3 fw-semi-bold fs-5'>Course</Link>
-                            <Link to='/login' className='text-decoration-none ms-3 fw-semi-bold fs-5'>Login</Link>
+
                             <Link to="/blog" className='text-decoration-none ms-3 fw-semi-bold fs-5'>Blog</Link>
                             <Link to="/faq" className='text-decoration-none ms-3 fw-semi-bold fs-5'>FAQ</Link>
+                        </Nav>
+                        <Nav>
+                            {user?.uid ? <>
+                                <p> {user.displayName}</p>
+                                <button onClick={logout} className='btn btn-primary ms-5'>logout</button>
+                            </>
+                                :
+                                <Link to='/login' className='text-decoration-none ms-3 fw-semi-bold fs-5'>Login</Link>
+                            }
                         </Nav>
                         <div className='d-lg-none'>
                             <LeftsideNav></LeftsideNav>

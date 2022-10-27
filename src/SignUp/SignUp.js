@@ -4,11 +4,25 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import Form from 'react-bootstrap/Form';
+import { FcGoogle } from "react-icons/fc";
+import { GoogleAuthProvider } from 'firebase/auth';
+import toast from 'react-hot-toast';
 
 
 const SignUp = () => {
-    const { creatUser } = useContext(AuthContext)
+    const { creatUser, googleSignIn } = useContext(AuthContext)
     const [error, setError] = useState(null)
+    const provider = new GoogleAuthProvider()
+
+    const handlegoogleSignIn = () => {
+        googleSignIn(provider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                toast.success('succesfully google login')
+            })
+    }
+
     const handlesubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -88,12 +102,12 @@ const SignUp = () => {
                         {error}
                     </Form.Text>
                 </div>
-                <div className='d-grid gap-2 mx-auto w-75'>
-                    <button className="btn btn-light">
-                        Continue with Google
-                    </button>
-                </div>
             </form>
+            <div className='d-grid gap-2 mx-auto w-25 mt-3 mb-4'>
+                <button onClick={handlegoogleSignIn} className="btn btn-light">
+                    <FcGoogle className='me-2 fs-3'></FcGoogle>  Continue with Google
+                </button>
+            </div>
         </div>
     );
 };
